@@ -49,13 +49,23 @@ public class HomePage extends Page {
     }
 
     public void clickOnAddToCartBtn() {
-        mediumUntil(visibilityOf(productQty));
+        longUntil(visibilityOf(productQty));
         clickOn(addToCartButton);
     }
     public void clickOnCartLogo() {
         mediumUntil(visibilityOf(cartLogo));
         clickOn(cartLogo);
     }
+
+    public void clickOnCommandButton() {
+        WebElement btnToOrder = this.driver.findElement(By.id("style_btn_cart__zrT9Q"));
+        longUntil(visibilityOf(btnToOrder));
+        clickOn(btnToOrder);
+    }
+
+
+
+
     public Boolean observeProductQty() {
          mediumUntil(visibilityOf(productQty));
          if (productQty.getText().equals("2"))
@@ -65,6 +75,16 @@ public class HomePage extends Page {
              }
         System.out.println(productQty.getText());
          return false;
+    }
+
+    public Boolean observeOrderPopUp() {
+        WebElement ppToOrder = this.driver.findElement(By.id("style_checkout_wrapper__JTsFz"));
+        mediumUntil(visibilityOf(ppToOrder));
+        if (ppToOrder.isDisplayed())
+        {
+            return true;
+        }
+        return false;
     }
 
     public Boolean observeProductDeletion() {
@@ -101,5 +121,6 @@ public class HomePage extends Page {
             System.out.println(btnDeleteAnElt.getText());
 
     }
+
 
 }

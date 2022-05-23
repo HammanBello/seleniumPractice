@@ -34,4 +34,9 @@ public class LoginSteps {
         homePage.saveScreenShotPNG();
     }
 
+    @Given("User is on homepage")
+    public void userIsOnHomepage() {
+        loginPage.goToLoginPage();
+        loginPage.login("237pk69@gmail.com", "P@wk/*69");
+    }
 }
