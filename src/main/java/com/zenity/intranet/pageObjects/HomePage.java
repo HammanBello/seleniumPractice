@@ -68,7 +68,7 @@ public class HomePage extends Page {
     }
 
     public Boolean observeProductDeletion() {
-        mediumUntil(visibilityOf(productQty));
+        longUntil(visibilityOf(emptyMsg));
         if (emptyMsg.getText().equals("Votre panier est vide"))
         {
             System.out.println(emptyMsg.getText());
@@ -94,7 +94,7 @@ public class HomePage extends Page {
         }
     }
     public void removeOneInCart() {
-        WebElement btnDeleteAnElt = this.driver.findElement(By.cssSelector("#style_card_wrapper__hrc1I>div>div.style_trash_product_cart__7Yzni"));
+        WebElement btnDeleteAnElt = this.driver.findElement(By.cssSelector("#style_card_wrapper__hrc1I > div > div.style_trash_product_cart__7Yzni"));
         longUntil(ExpectedConditions.visibilityOf(btnDeleteAnElt));
             mediumUntil(visibilityOf(btnDeleteAnElt));
             clickOn(btnDeleteAnElt);
