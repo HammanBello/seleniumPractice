@@ -49,9 +49,13 @@ public class CartModifSteps {
 
     @And("click on the delete button to delete the product in the cart")
     public void clickOnTheDeleteButtonToDeleteTheProductInTheCart() {
+        homePage.removeOneInCart();
     }
+
 
     @Then("we observe in the list that the basket is modified, the product has been deleted")
     public void weObserveInTheListThatTheBasketIsModifiedTheProductHasBeenDeleted() {
+        assertTrue ( homePage.observeProductDeletion());
+        homePage.saveScreenShotPNG();
     }
 }
