@@ -10,5 +10,5 @@ When user is logging-in with "<email>" "<password>"
 Then we observe in the list that the basket is modified, the product has been deleted
 
    Examples:
-     | email            | password |
-     | 237pk69@gmail.com | P@wk/*69 |
+     | email                | password   |
+     | hambello30@gmail.com | azertyuiop |

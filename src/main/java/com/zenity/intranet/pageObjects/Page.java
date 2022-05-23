@@ -130,6 +130,11 @@ public class Page {
          Allure.addAttachment("screenshot", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
      }
 
+    protected void hoverAnElement(WebElement element) {
+    Actions action = new Actions(driver);
+    action.moveToElement(element).perform();
+    }
+
     protected void scrollToElement(WebElement element) {
         js.executeScript("arguments[0].scrollIntoView(true); scrollBy(0, -window.innerHeight/2 + arguments[0].offsetHeight/2);", element);
     }

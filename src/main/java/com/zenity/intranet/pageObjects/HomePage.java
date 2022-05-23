@@ -6,6 +6,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import static java.lang.Float.parseFloat;
+import static java.lang.Integer.parseInt;
 import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
 
@@ -62,8 +65,38 @@ public class HomePage extends Page {
         longUntil(visibilityOf(btnToOrder));
         clickOn(btnToOrder);
     }
+    public void clickOnMultipleArticleCartLogo() {
+        longUntil(ExpectedConditions.urlContains("home"));
+        waitForLoadingPage();
+        longUntil(ExpectedConditions.visibilityOfAllElements());
+        hoverAnElement(this.driver.findElement(By.cssSelector("#style_popular_product_wrapper__z6J0h > div:nth-child(1) > div.style_card_body__QuFGN")));
+        WebElement article1Cart = this.driver.findElement(By.cssSelector("#style_popular_product_wrapper__z6J0h > div:nth-child(1) > div.style_card_footer__q1lbJ > button"));
+        hoverAnElement(this.driver.findElement(By.cssSelector("#style_popular_product_wrapper__z6J0h > div:nth-child(2) > div.style_card_body__QuFGN")));
+        WebElement article2Cart = this.driver.findElement(By.cssSelector("#style_popular_product_wrapper__z6J0h > div:nth-child(2) > div.style_card_footer__q1lbJ > button"));
+        hoverAnElement(this.driver.findElement(By.cssSelector("#style_popular_product_wrapper__z6J0h > div:nth-child(3) > div.style_card_body__QuFGN")));
+        WebElement article3Cart = this.driver.findElement(By.cssSelector("#style_popular_product_wrapper__z6J0h > div:nth-child(3) > div.style_card_footer__q1lbJ > button"));
+        WebElement article1Price = this.driver.findElement(By.cssSelector("#style_popular_product_wrapper__z6J0h > div:nth-child(1) > div.style_card_footer__q1lbJ > p\n"));
+        WebElement article2Price = this.driver.findElement(By.cssSelector("#style_popular_product_wrapper__z6J0h > div:nth-child(2) > div.style_card_footer__q1lbJ > p\n"));
+        WebElement article3Price = this.driver.findElement(By.cssSelector("#style_popular_product_wrapper__z6J0h > div:nth-child(3) > div.style_card_footer__q1lbJ > p\n"));
+
+        float price1 = Float.parseFloat(article1Price.getText().replace(" €", ""));
+        float price2 = Float.parseFloat(article2Price.getText().replace(" €", ""));
+        float price3 = Float.parseFloat(article3Price.getText().replace(" €", ""));
+        System.out.println(price1+price2+price3);
+    }
 
 
+    public Boolean observeProductTotalPrice() {
+        longUntil(visibilityOf(productQty));
+
+        if (emptyMsg.getText().equals("Votre panier est vide"))
+        {
+            System.out.println(emptyMsg.getText());
+            return true;
+        }
+        System.out.println(emptyMsg.getText());
+        return false;
+    }
 
 
     public Boolean observeProductQty() {

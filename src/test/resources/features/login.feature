@@ -7,5 +7,5 @@ Feature: As a customer I want to login so that I can shop
     Then  he should be at the home page
 
     Examples:
-      | email                | password    |
-      | ndorichnel@gmail.com | Nd0r\|chnel |
+      | email                | password   |
+      | hambello30@gmail.com | azertyuiop |

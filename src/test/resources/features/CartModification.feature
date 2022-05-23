@@ -14,5 +14,5 @@ When user is logging-in with "<email>" "<password>"
   Then we observe that the basket has been updated
 
 Examples:
-    | email             | password |
-    | 237pk69@gmail.com | P@wk/*69 |
+    | email                | password   |
+    | hambello30@gmail.com | azertyuiop |
