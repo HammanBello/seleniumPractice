@@ -81,7 +81,6 @@ public class HomePage extends Page {
         WebElement article1Price = this.driver.findElement(By.cssSelector("#style_popular_product_wrapper__z6J0h > div:nth-child(1) > div.style_card_footer__q1lbJ > p"));
         WebElement article2Price = this.driver.findElement(By.cssSelector("#style_popular_product_wrapper__z6J0h > div:nth-child(2) > div.style_card_footer__q1lbJ > p"));
         WebElement article3Price = this.driver.findElement(By.cssSelector("#style_popular_product_wrapper__z6J0h > div:nth-child(3) > div.style_card_footer__q1lbJ > p"));
-
         float price1 = Float.parseFloat(article1Price.getText().replace(" €", ""));
         float price2 = Float.parseFloat(article2Price.getText().replace(" €", ""));
         float price3 = Float.parseFloat(article3Price.getText().replace(" €", ""));
@@ -160,6 +159,25 @@ public class HomePage extends Page {
             System.out.println(btnDeleteAnElt.getText());
 
     }
+    public void scrollToBottomOfHomePage() {
+        WebElement lastElt = this.driver.findElement(By.cssSelector("#style_popular_product_wrapper__z6J0h > div:last-child > div.style_card_body__QuFGN"));
+        scrollDownToElement(lastElt);
 
+    }
 
+    public boolean controlOfDotedPrices() {
+        longUntil(ExpectedConditions.urlContains("home"));
+        waitForLoadingPage();
+        longUntil(ExpectedConditions.visibilityOfAllElements());
+        WebElement LastArticlePrice = this.driver.findElement(By.cssSelector("#style_popular_product_wrapper__z6J0h > div:last-child > div.style_card_footer__q1lbJ > p"));
+        try{
+            float price1 = Float.parseFloat(LastArticlePrice.getText().replace(" €", ""));
+            System.out.println(price1);
+            return  true;
+        } catch(Exception e ){
+            System.out.println(e);
+            return false;
+        }
+
+    }
 }
