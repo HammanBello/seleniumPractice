@@ -8,6 +8,7 @@ import io.cucumber.java.en.When;
 import static org.testng.AssertJUnit.assertTrue;
 
 public class CartModifSteps {
+    float total=0;
 
     private HomePage homePage;
 
@@ -62,12 +63,12 @@ public class CartModifSteps {
 
     @When("User clicks on the basket icon of the products \"first product 1\", \"first product 2\", \"first product 3\" to add to the basket")
     public void userClicksOnTheBasketIconOfTheProductsToAddToTheBasket() {
-homePage.clickOnMultipleArticleCartLogo();
+ total = homePage.clickOnMultipleArticleCartLogo();
 
     }
 
     @Then("User should see the sum total of the prices of the items in the cart")
     public void userShouldSeeTheSumTotalOfThePricesOfTheItemsInTheCart() {
-        homePage.clickOnMultipleArticleCartLogo();
+        homePage.observeProductTotalPrice(total);
     }
 }
