@@ -2,6 +2,7 @@ package com.zenity.intranet.steps;
 
 import com.zenity.intranet.pageObjects.HomePage;
 import com.zenity.intranet.pageObjects.LoginPage;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -38,5 +39,20 @@ public class LoginSteps {
     public void userIsOnHomepage() {
         loginPage.goToLoginPage();
         loginPage.login("hambello30@gmail.com", "azertyuiop");
+    }
+
+    @And("The user fill the email's field with value {string}")
+    public void theUserFillTheEmailSFieldWithValue(String email) {
+        loginPage.emailFieldCompletion(email);
+    }
+
+    @When("the user clicks on the next field")
+    public void theUserClicksOnTheNextField() {
+        loginPage.clickOnPasswordfield();
+    }
+
+    @Then("An error appears to report invalid email syntax")
+    public void anErrorAppearsToReportInvalidEmailSyntax() {
+        assertTrue(loginPage.emailErrorMsgVerification());
     }
 }
