@@ -125,6 +125,16 @@ public class HomePage extends Page {
         return false;
     }
 
+    public Boolean observeProductPopUp() {
+        WebElement ppForProduct = this.driver.findElement(By.id("style_checkout_wrapper__JTsFz"));
+        mediumUntil(visibilityOf(ppForProduct));
+        if (ppForProduct.isDisplayed())
+        {
+            return true;
+        }
+        return false;
+    }
+
     public Boolean observeProductDeletion() {
         longUntil(visibilityOf(emptyMsg));
         if (emptyMsg.getText().equals("Votre panier est vide"))

@@ -40,4 +40,15 @@ public class CommandSteps {
         assertTrue ( homePage.controlOfDotedPrices());
         homePage.saveScreenShotPNG();
     }
+
+    @When("User click on a product")
+    public void userClickOnAProduct() {
+        homePage.clickOnArticle();
+    }
+
+    @Then("Spawn a popup on the page with description of the article and the exact price")
+    public void spawnAPopupOnThePageWithDescriptionOfTheArticleAndTheExactPrice() {
+        assertTrue ( homePage.observeProductPopUp());
+        homePage.saveScreenShotPNG();
+    }
 }
