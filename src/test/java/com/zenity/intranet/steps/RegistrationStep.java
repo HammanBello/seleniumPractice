@@ -15,7 +15,7 @@ public class RegistrationStep {
 
     RegisterPage registerPage;
 
-    @Given("The user is on Sign-Up page")
+    @Given("The user is on Registration page")
     public void theUserIsOnSignUpPage() {
         registerPage.goToRegisterPage();
     }

@@ -13,7 +13,7 @@ import org.testng.annotations.BeforeClass;
 
 
 @CucumberOptions(
-        features = {"./src/test/resources/features/NoPasswordRegister.feature"},
+        features = {"./src/test/resources/features"},
         glue = {"com.zenity.intranet.steps", "com/zenity/intranet/pageObjects"},
         monochrome = true,
         plugin = {

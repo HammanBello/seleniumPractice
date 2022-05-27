@@ -78,9 +78,9 @@ public class HomePage extends Page {
         hoverAnElement(this.driver.findElement(By.cssSelector("#style_popular_product_wrapper__z6J0h > div:nth-child(3) > div.style_card_body__QuFGN")));
         WebElement article3Cart = this.driver.findElement(By.cssSelector("#style_popular_product_wrapper__z6J0h > div:nth-child(3) > div.style_card_footer__q1lbJ > button"));
         clickOn(article3Cart);
-        WebElement article1Price = this.driver.findElement(By.cssSelector("#style_popular_product_wrapper__z6J0h > div:nth-child(1) > div.style_card_footer__q1lbJ > p"));
-        WebElement article2Price = this.driver.findElement(By.cssSelector("#style_popular_product_wrapper__z6J0h > div:nth-child(2) > div.style_card_footer__q1lbJ > p"));
-        WebElement article3Price = this.driver.findElement(By.cssSelector("#style_popular_product_wrapper__z6J0h > div:nth-child(3) > div.style_card_footer__q1lbJ > p"));
+        WebElement article1Price = this.driver.findElement(By.cssSelector("#style_popular_product_wrapper__z6J0h > div:nth-child(1) > div.style_card_footer__q1lbJ > p > span"));
+        WebElement article2Price = this.driver.findElement(By.cssSelector("#style_popular_product_wrapper__z6J0h > div:nth-child(2) > div.style_card_footer__q1lbJ > p > span"));
+        WebElement article3Price = this.driver.findElement(By.cssSelector("#style_popular_product_wrapper__z6J0h > div:nth-child(3) > div.style_card_footer__q1lbJ > p > span"));
         float price1 = Float.parseFloat(article1Price.getText().replace(" €", ""));
         float price2 = Float.parseFloat(article2Price.getText().replace(" €", ""));
         float price3 = Float.parseFloat(article3Price.getText().replace(" €", ""));
@@ -92,8 +92,8 @@ public class HomePage extends Page {
     public Boolean observeProductTotalPrice(float f) {
         longUntil(visibilityOf(productQty));
         WebElement totalprice = this.driver.findElement(By.cssSelector("#style_totalPrice__o2yCy > h5:nth-child(2)"));
-        float pricetotal = Float.parseFloat(totalprice.getText().replace("$ ", ""));
-        System.out.println(totalprice.getText().replace("$ ", ""));
+        float pricetotal = Float.parseFloat(totalprice.getText().replace(" €", ""));
+        System.out.println(totalprice.getText().replace(" €", ""));
         if (pricetotal == f)
         {
             System.out.println(pricetotal + "==?" + f);
@@ -106,7 +106,7 @@ public class HomePage extends Page {
 
     public Boolean observeProductQty() {
          mediumUntil(visibilityOf(productQty));
-         if (productQty.getText().equals("2"))
+         if (productQty.getText().equals("4"))
          {
              System.out.println(productQty.getText());
              return true;
@@ -170,6 +170,7 @@ public class HomePage extends Page {
 
     }
     public void scrollToBottomOfHomePage() {
+        longUntil(ExpectedConditions.visibilityOfAllElements());
         WebElement lastElt = this.driver.findElement(By.cssSelector("#style_popular_product_wrapper__z6J0h > div:last-child > div.style_card_body__QuFGN"));
         scrollDownToElement(lastElt);
 

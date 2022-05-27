@@ -55,4 +55,8 @@ public class LoginSteps {
     public void anErrorAppearsToReportInvalidEmailSyntax() {
         assertTrue(loginPage.emailErrorMsgVerification());
     }
+
+    @When("The user click on <social_network> icon")
+    public void theUserClickOnSocial_networkIcon() {
+    }
 }

@@ -7,4 +7,3 @@ Then user have to see an article with a <doted_price>
 Examples:
     |doted_price  |
     |3.99         |
-    |4.55         |
