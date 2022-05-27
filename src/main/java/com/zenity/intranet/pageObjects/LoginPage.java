@@ -6,8 +6,12 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.concurrent.ExecutionException;
 
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
+
 public class LoginPage extends Page {
 
+    @FindBy(css = "#__next > div > main > div.style_col_2__kzyDS > div > button")
+    private WebElement googleBtn;
     @FindBy(id = "email_login")
     private WebElement emailField;
 
@@ -35,6 +39,10 @@ public class LoginPage extends Page {
         clickOn(passwordField);
     }
 
+    public void clickOnGoogleBtn() {
+        clickOn(googleBtn);
+    }
+
 
     public boolean emailErrorMsgVerification() {
 
@@ -48,6 +56,16 @@ public class LoginPage extends Page {
         }
     }
 
+    public Boolean observeGoogleAuth() {
+        mediumUntil(visibilityOf(googleBtn));
+        if (googleBtn.getText().equals("4"))
+        {
+            System.out.println(googleBtn.getText());
+            return true;
+        }
+        System.out.println(googleBtn.getText());
+        return false;
+    }
 
 
 }

@@ -16,6 +16,7 @@ public class HomePage extends Page {
 
     @FindBy(css = "nav h1")
     private WebElement ztrain_logo;
+
     @FindBy(css = "#style_popular_product_wrapper__z6J0h > div:nth-child(1) > div.style_card_body__QuFGN")
     private WebElement firsTArticle;
     @FindBy(css = "#style_card_wrapper__hrc1I > div > div.style_trash_product_cart__7Yzni")
@@ -50,6 +51,8 @@ public class HomePage extends Page {
     public void clickOnPlusBtn() {
         clickOn(plusBtn);
     }
+
+
 
     public void clickOnAddToCartBtn() {
         longUntil(visibilityOf(productQty));

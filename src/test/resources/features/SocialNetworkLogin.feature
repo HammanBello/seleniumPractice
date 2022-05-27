@@ -2,9 +2,9 @@
 Feature: Regular login with Google
 Scenario Outline: As a user I can login directly with my google account
 Given user is at the login page
-When The user click on <social_network> icon
-Then The user is redirected to a <social_network>
-But An error page appears
+When The user click on Google icon
+And The user is redirected to a Google Auth page where he types his google's credentials
+Then he should be at the home page
 Examples:
   |social_network|
   | google       |
