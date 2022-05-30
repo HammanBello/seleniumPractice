@@ -3,10 +3,14 @@ package com.zenity.intranet.pageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.Iterator;
+import java.util.Set;
 import java.util.concurrent.ExecutionException;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfAllElements;
 
 public class LoginPage extends Page {
 
@@ -61,15 +65,43 @@ public class LoginPage extends Page {
         }
     }
 
-    public Boolean observeGoogleAuth() {
-        mediumUntil(visibilityOf(googleBtn));
-        if (googleBtn.getText().equals("4"))
-        {
-            System.out.println(googleBtn.getText());
-            return true;
+    public void loginGoogleAuth(String email, String password) {
+
+        String parent=driver.getWindowHandle();
+        Set<String> s=driver.getWindowHandles();
+        Iterator<String> I1= s.iterator();
+
+        while(I1.hasNext()) {
+
+            String child_window = I1.next();
+
+
+            if (!parent.equals(child_window)) {
+                shortUntil(ExpectedConditions.urlContains("home"));
+                waitForLoadingPage();
+                shortUntil(ExpectedConditions.visibilityOfAllElements());
+                driver.switchTo().window(child_window);
+
+                System.out.println(driver.switchTo().window(child_window).getTitle()+"est le nom de la nouvelle fenetre");
+                WebElement emailfield = this.driver.findElement(By.id("identifierId"));
+                sendKeysSlowly(emailfield,email);
+                WebElement nextBtn = this.driver.findElement(By.cssSelector("#identifierNext > div > button"));
+                clickOn(nextBtn);
+                shortWait.until(visibilityOfAllElements());
+                WebElement passwordField = this.driver.findElement(By.cssSelector("#password > div.aCsJod.oJeWuf > div > div.Xb9hP > input"));
+                sendKeysSlowly(passwordField,password);
+                clickOn(nextBtn);
+                driver.switchTo().window(parent);
+            }
         }
-        System.out.println(googleBtn.getText());
-        return false;
+
+
+
+
+
+        driver.switchTo().window(parent);
+
+
     }
 
 

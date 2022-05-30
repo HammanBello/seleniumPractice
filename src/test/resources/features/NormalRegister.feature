@@ -6,5 +6,5 @@ Given The user is on Registration page
 When  The user click on "Inscription" button
 Then  he should be at the home page
 Examples:
-|email          |password |
-| test@gmail.com|tesT12345|
+|email            |password |
+|test34@gmail.com |tesT12345|

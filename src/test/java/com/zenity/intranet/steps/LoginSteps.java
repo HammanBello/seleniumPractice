@@ -72,9 +72,9 @@ public class LoginSteps {
     loginPage.clickOnGoogleBtn();
     }
 
-    @Then("The user is redirected to a Google Auth page where he types his google's credentials")
-    public void theUserIsRedirectedToASocial_network() {
-        assertTrue(true);
+    @Then("The user is redirected to a Google Auth page where he types his google's {string} and {string}")
+    public void theUserIsRedirectedToASocial_network(String email, String password) {
+        loginPage.loginGoogleAuth(email,  password);
     }
 
     @And("The user click on \"mot de passe oublié\"")
