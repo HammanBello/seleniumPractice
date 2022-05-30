@@ -15,6 +15,8 @@ public class LoginPage extends Page {
     @FindBy(id = "email_login")
     private WebElement emailField;
 
+    @FindBy(css = "#style_content_form__yXJox > a")
+    private WebElement forgotPaswwdLink;
     @FindBy(id = "password_login")
     private WebElement passwordField;
 
@@ -43,6 +45,9 @@ public class LoginPage extends Page {
         clickOn(googleBtn);
     }
 
+    public void clickOnForgottenPasswd() {
+        clickOn(forgotPaswwdLink);
+    }
 
     public boolean emailErrorMsgVerification() {
 

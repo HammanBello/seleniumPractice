@@ -1,5 +1,6 @@
 package com.zenity.intranet.steps;
 
+import com.zenity.intranet.pageObjects.ForgottenPasswordPage;
 import com.zenity.intranet.pageObjects.HomePage;
 import com.zenity.intranet.pageObjects.LoginPage;
 import io.cucumber.java.en.And;
@@ -14,9 +15,12 @@ public class LoginSteps {
     private LoginPage loginPage;
     private HomePage homePage;
 
-    public LoginSteps(LoginPage loginPage, HomePage homePage) {
+    private ForgottenPasswordPage forgottenPasswordPage;
+
+    public LoginSteps(LoginPage loginPage, HomePage homePage, ForgottenPasswordPage forgottenPasswordPage) {
         this.homePage = homePage;
         this.loginPage = loginPage;
+        this.forgottenPasswordPage = forgottenPasswordPage;
     }
 
     @Given("user is at the login page")
@@ -72,4 +76,26 @@ public class LoginSteps {
     public void theUserIsRedirectedToASocial_network() {
         assertTrue(true);
     }
+
+    @And("The user click on \"mot de passe oublié\"")
+    public void theUserClickOn() {
+    loginPage.clickOnForgottenPasswd();
+    }
+
+
+    @And("The user fill the form with his an {string} and an invalid {string}")
+    public void theUserFillTheFormWithHisAnAndAnInvalid(String email, String password) {
+        forgottenPasswordPage.reset(email, password);
+    }
+
+    @When("The user click on \"Réinitialiser\" button")
+    public void theUserClickOnButton() {
+        forgottenPasswordPage.clickOnReset();
+    }
+
+    @Then("the message \"Le mot de passe doit avoir au moins 8 caractères\" is displayed")
+    public void theMessageIsDisplayed() {
+        forgottenPasswordPage.psswdErrorMsgVerification();
+    }
+
 }
