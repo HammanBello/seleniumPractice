@@ -55,11 +55,10 @@ public class LoginPage extends Page {
 
     public boolean emailErrorMsgVerification() {
 
-        try{
+        try {
             WebElement errorMsg = this.driver.findElement(By.cssSelector("#style_content_form__yXJox > p"));
-            System.out.println(errorMsg.getText());
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
             return false;
         }
@@ -67,11 +66,11 @@ public class LoginPage extends Page {
 
     public void loginGoogleAuth(String email, String password) {
 
-        String parent=driver.getWindowHandle();
-        Set<String> s=driver.getWindowHandles();
-        Iterator<String> I1= s.iterator();
+        String parent = driver.getWindowHandle();
+        Set<String> s = driver.getWindowHandles();
+        Iterator<String> I1 = s.iterator();
 
-        while(I1.hasNext()) {
+        while (I1.hasNext()) {
 
             String child_window = I1.next();
 
@@ -82,21 +81,18 @@ public class LoginPage extends Page {
                 shortUntil(ExpectedConditions.visibilityOfAllElements());
                 driver.switchTo().window(child_window);
 
-                System.out.println(driver.switchTo().window(child_window).getTitle()+"est le nom de la nouvelle fenetre");
+                System.out.println(driver.switchTo().window(child_window).getTitle() + "est le nom de la nouvelle fenetre");
                 WebElement emailfield = this.driver.findElement(By.id("identifierId"));
-                sendKeysSlowly(emailfield,email);
+                sendKeysSlowly(emailfield, email);
                 WebElement nextBtn = this.driver.findElement(By.cssSelector("#identifierNext > div > button"));
                 clickOn(nextBtn);
                 shortWait.until(visibilityOfAllElements());
                 WebElement passwordField = this.driver.findElement(By.cssSelector("#password > div.aCsJod.oJeWuf > div > div.Xb9hP > input"));
-                sendKeysSlowly(passwordField,password);
+                sendKeysSlowly(passwordField, password);
                 clickOn(nextBtn);
                 driver.switchTo().window(parent);
             }
         }
-
-
-
 
 
         driver.switchTo().window(parent);

@@ -1,4 +1,5 @@
 package com.zenity.intranet.pageObjects;
+
 import com.zenity.intranet.pageObjects.Page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -22,9 +23,6 @@ public class ForgottenPasswordPage extends Page {
     private WebElement resetBtn;
 
 
-
-
-
     public void reset(String email, String password) {
         longUntil(ExpectedConditions.urlContains("resetPassword"));
         waitForLoadingPage();
@@ -42,20 +40,16 @@ public class ForgottenPasswordPage extends Page {
     }
 
 
-
     public boolean psswdErrorMsgVerification() {
 
-        try{
+        try {
             WebElement errorMsg = this.driver.findElement(By.cssSelector("#style_card__HeEtb > form > p"));
-            System.out.println(errorMsg.getText());
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
             return false;
         }
     }
-
-
 
 
 }

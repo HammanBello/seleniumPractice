@@ -7,20 +7,20 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
-public class RegisterPage extends Page{
+public class RegisterPage extends Page {
 
     @FindBy(css = "nav h1")
     private WebElement ztrain_logo;
-    @FindBy (id = "password_register")
+    @FindBy(id = "password_register")
     private WebElement passwordField;
 
-    @FindBy (id = "confirm_password_register")
+    @FindBy(id = "confirm_password_register")
     private WebElement passwordConfirmField;
 
-    @FindBy (id = "email_register")
+    @FindBy(id = "email_register")
     private WebElement emailField;
 
-    @FindBy (id = "btn_register")
+    @FindBy(id = "btn_register")
     private WebElement registerButton;
 
 
@@ -33,6 +33,7 @@ public class RegisterPage extends Page{
         sendKeysSlowly(passwordField, password);
         sendKeysSlowly(passwordConfirmField, password);
     }
+
     public void registerButNoPsswdConfirm(String email, String password) {
         sendKeysSlowly(emailField, email);
         sendKeysSlowly(passwordField, password);
@@ -40,10 +41,8 @@ public class RegisterPage extends Page{
 
     public boolean notHomePageVerification() {
         String S = driver.getCurrentUrl();
-        if (!S.equals("https://ztrain-web.vercel.app/auth/home"))
-            return true;
-        else
-            return false;
+        if (!S.equals("https://ztrain-web.vercel.app/auth/home")) return true;
+        else return false;
 
     }
 
@@ -54,16 +53,14 @@ public class RegisterPage extends Page{
 
     public boolean emailErrorMsgVerification() {
 
-        try{
+        try {
             WebElement errorMsg = this.driver.findElement(By.cssSelector("#style_content_form__yXJox > p:nth-child(3)"));
-            System.out.println(errorMsg.getText());
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
             return false;
         }
     }
-
 
 
     public String getTitle() {

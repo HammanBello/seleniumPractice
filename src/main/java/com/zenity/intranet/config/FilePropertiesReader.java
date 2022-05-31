@@ -32,7 +32,6 @@ public enum FilePropertiesReader {
     private String readProperty(String key) {
         String property = properties.getProperty(key);
         if(property == null || property.isEmpty()) {
-            System.out.println(key + "value is missing");
         }
         return property;
     }
