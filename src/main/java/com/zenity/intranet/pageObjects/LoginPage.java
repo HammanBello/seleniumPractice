@@ -90,6 +90,7 @@ public class LoginPage extends Page {
                 WebElement passwordField = this.driver.findElement(By.cssSelector("#password > div.aCsJod.oJeWuf > div > div.Xb9hP > input"));
                 sendKeysSlowly(passwordField, password);
                 clickOn(nextBtn);
+                driver.close();
                 driver.switchTo().window(parent);
             }
         }
